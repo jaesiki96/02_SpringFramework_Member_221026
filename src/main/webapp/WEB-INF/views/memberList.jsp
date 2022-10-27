@@ -27,6 +27,7 @@
         <th>이름</th>
         <th>나이</th>
         <th>조회</th>
+        <th>삭제</th>
     </tr>
     <c:forEach items="${memberList}" var="member">
         <tr>
@@ -38,9 +39,20 @@
             <td>
                 <a href="/member?id=${member.id}">조회</a>
             </td>
+            <td>
+                                        <%-- onclick안에 싱글 쿼터 사용!   --%>
+                <button class="btn btn-danger" onclick="deleteMember('${member.id}')">삭제</button>
+            </td>
         </tr>
     </c:forEach>
 </table>
 </div>
 </body>
+<script>
+    const deleteMember = (clickedId) => {
+        console.log("클릭한 id값: ", clickedId);
+        // delete 라는 주소로 id 값이 넘어간다.
+        location.href = "/delete?id="+clickedId;
+    }
+</script>
 </html>

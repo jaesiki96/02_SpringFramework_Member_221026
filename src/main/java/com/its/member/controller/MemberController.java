@@ -66,4 +66,14 @@ public class MemberController {
         model.addAttribute("member", memberDTO);
         return "memberDetail";
     }
+    // 삭제
+    // 링크를 타고오면 Get
+    // members 를 다시 불러오는 이유는 redirect 를 사용하지 않으면 삭제 후 회원 목록이 다시 나타나지 않기 때문에
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") long id, Model model) {
+        memberService.delete(id);
+        // 2. redirect 방식을 이용하여 /members 주소 요청
+        // members 에 findAll 이 있기 때문에 redirect 로 회원목록을 불러올 수 있다
+        return "redirect:/members";
+    }
 }
