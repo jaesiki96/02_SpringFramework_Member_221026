@@ -17,9 +17,16 @@ public class MemberRepository {
     }
 
     public MemberDTO login(String memberEmail, String memberPassword) {
+        // memberDTO 객체 만들기
         MemberDTO memberDTO = new MemberDTO();
+        // DTO 객체 담기
         memberDTO.setMemberEmail(memberEmail);
         memberDTO.setMemberPassword(memberPassword);
+        // DTO 객체 넘겨주기
+        return sql.selectOne("Member.login", memberDTO);
+    }
+
+    public MemberDTO login(MemberDTO memberDTO) {
         return sql.selectOne("Member.login", memberDTO);
     }
 

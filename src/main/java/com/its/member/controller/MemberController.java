@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -38,13 +38,16 @@ public class MemberController {
     }
     // 로그인 처리
     @PostMapping("/login")
-    public String login(@RequestParam("memberEmail") String memberEmail,
-                        @RequestParam("memberPassword") String memberPassword) {
-        boolean loginResult = memberService.login(memberEmail,memberPassword);
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
+        boolean loginResult = memberService.login(memberDTO);
         if (loginResult) {
+            // 세션에 로그인한 사용자의 이메일을 저장
+            // memberDTO.getMemberEmail()을 "LoginEmail"에 담는다
+            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+            model.addAttribute("modelEmail", memberDTO.getMemberEmail());
             return "memberMain";
         } else {
-            return "index";
+            return "memberLogin";
         }
     }
 

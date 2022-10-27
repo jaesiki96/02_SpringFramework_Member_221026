@@ -8,7 +8,7 @@
         insert into member_table(memberEmail, memberPassword, memberName, memberAge)
             values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge})
     </insert>
-    <select id="login" resultType="member">
+    <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
     </select>
     <select id="members" resultType="member">

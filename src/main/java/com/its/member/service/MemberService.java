@@ -11,7 +11,7 @@ import java.util.List;
 public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
-
+    // 회원가입
     public boolean save(MemberDTO memberDTO) {
         int saveResult = memberRepository.save(memberDTO);
         if (saveResult > 0) {
@@ -20,11 +20,10 @@ public class MemberService {
             return false;
         }
     }
-
-    public boolean login(String memberEmail, String memberPassword) {
-        MemberDTO memberDTO = memberRepository.login(memberEmail,memberPassword);
-        if (memberEmail.equals(memberDTO.getMemberEmail())
-                && memberPassword.equals(memberDTO.getMemberPassword())) {
+    // 로그인
+    public boolean login(MemberDTO memberDTO) {
+        MemberDTO member = memberRepository.login(memberDTO);
+        if (memberDTO != null) {
             return true;
         } else {
             return false;
