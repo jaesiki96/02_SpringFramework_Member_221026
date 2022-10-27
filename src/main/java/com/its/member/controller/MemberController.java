@@ -50,10 +50,11 @@ public class MemberController {
             return "memberLogin";
         }
     }
-
+    // 목록 출력
+    // 데이터를 가지고 화면으로 가야함 -> Model 객체 필요
     @GetMapping("/members")
-    public String members(Model model) {
-        List<MemberDTO> memberList = memberService.members();
+    public String findAll(Model model) {
+        List<MemberDTO> memberList = memberService.findAll();
         model.addAttribute("memberList", memberList);
         return "memberList";
     }

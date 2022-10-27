@@ -4,7 +4,6 @@ import com.its.member.dto.MemberDTO;
 import com.its.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -29,9 +28,9 @@ public class MemberService {
             return false;
         }
     }
-
-    public List<MemberDTO> members() {
-        return memberRepository.members();
+    // 목록 출력
+    public List<MemberDTO> findAll() {
+        return memberRepository.findAll();
     }
 
     public MemberDTO member(long memberId) {

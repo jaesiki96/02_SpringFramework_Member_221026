@@ -30,8 +30,8 @@ public class MemberRepository {
         return sql.selectOne("Member.login", memberDTO);
     }
 
-    public List<MemberDTO> members() {
-        return sql.selectList("Member.members");
+    public List<MemberDTO> findAll() {
+        return sql.selectList("Member.findAll");
     }
 
     public MemberDTO member(long memberId) {

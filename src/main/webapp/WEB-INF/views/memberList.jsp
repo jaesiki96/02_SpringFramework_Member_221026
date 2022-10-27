@@ -10,42 +10,37 @@
 <html>
 <head>
     <title>memberList.jsp</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <style>
         table, th, td {
-            border: 1px solid #bcbcbc;
-        }
-        table {
-            width: 600px;
-            height: 200px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 200px;
-        }
-        tr, td {
             text-align: center;
         }
     </style>
 </head>
 <body>
-<table>
+<div class="container">
+<table class="table table-striped table-hover">
     <tr>
         <th>회원번호</th>
         <th>이메일</th>
         <th>비밀번호</th>
         <th>이름</th>
         <th>나이</th>
-        <th>전화번호</th>
+        <th>조회</th>
     </tr>
     <c:forEach items="${memberList}" var="member">
         <tr>
-            <td>${member.memberId}</td>
+            <td>${member.id}</td>
             <td>${member.memberEmail}</td>
             <td>${member.memberPassword}</td>
             <td>${member.memberName}</td>
             <td>${member.memberAge}</td>
-            <td>${member.memberMobile}</td>
+            <td>
+                <a href="/member?id=${member.id}">조회</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
+</div>
 </body>
 </html>

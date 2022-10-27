@@ -11,7 +11,7 @@
     <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
     </select>
-    <select id="members" resultType="member">
+    <select id="findAll" resultType="member">
         select * from member_table
     </select>
     <select id="member" parameterType="Long" resultType="member">
