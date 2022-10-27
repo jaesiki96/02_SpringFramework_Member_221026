@@ -9,15 +9,32 @@
 <html>
 <head>
     <title>memberDetail.jsp</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
 <body>
-  <h2>상세조회</h2>
-  <h4>memberDTO객체: ${member}</h4>
-  <h5>번호: ${member.memberId}</h5>
-  <h5>이메일: ${member.memberEmail}</h5>
-  <h5>비밀번호: ${member.memberPassword}</h5>
-  <h5>이름: ${member.memberName}</h5>
-  <h5>나이: ${member.memberAge}</h5>
-  <h5>전화번호: ${member.memberMobile}</h5>
+  <div class="container">
+    <table class="table table-striped">
+      <tr>
+        <th>회원번호</th>
+        <td>${member.id}</td>
+      </tr>
+      <tr>
+        <th>이메일</th>
+        <td>${member.memberEmail}</td>
+      </tr>
+      <tr>
+        <th>비밀번호</th>
+        <td>${member.memberPassword}</td>
+      </tr>
+      <tr>
+        <th>이름</th>
+        <td>${member.memberName}</td>
+      </tr>
+      <tr>
+        <th>나이</th>
+        <td>${member.memberAge}</td>
+      </tr>
+    </table>
+  </div>
 </body>
 </html>

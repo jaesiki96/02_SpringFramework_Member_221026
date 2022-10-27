@@ -15,7 +15,6 @@
     <div class="container">
         <h2>${sessionScope.loginEmail}님 환영합니다.</h2>
         <h2>model값: ${modelEmail}</h2>
-
         <a href="/">index.jsp</a>
     </div>
 </body>

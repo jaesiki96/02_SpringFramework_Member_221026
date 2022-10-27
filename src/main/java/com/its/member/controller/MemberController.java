@@ -58,10 +58,11 @@ public class MemberController {
         model.addAttribute("memberList", memberList);
         return "memberList";
     }
-
+    // 상세 조회
+    // 파라미터로 id가 넘어왔기 때문에 @RequestParam 사용
     @GetMapping("/member")
-    public String member(@RequestParam("memberId") long memberId, Model model) {
-        MemberDTO memberDTO = memberService.member(memberId);
+    public String findById(@RequestParam("id") long id, Model model) {
+        MemberDTO memberDTO = memberService.findById(id);
         model.addAttribute("member", memberDTO);
         return "memberDetail";
     }

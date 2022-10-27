@@ -34,7 +34,7 @@ public class MemberRepository {
         return sql.selectList("Member.findAll");
     }
 
-    public MemberDTO member(long memberId) {
-        return sql.selectOne("Member.member", memberId);
+    public MemberDTO findById(long id) {
+        return sql.selectOne("Member.findById", id);
     }
 }

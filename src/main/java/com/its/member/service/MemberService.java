@@ -32,8 +32,8 @@ public class MemberService {
     public List<MemberDTO> findAll() {
         return memberRepository.findAll();
     }
-
-    public MemberDTO member(long memberId) {
-        return memberRepository.member(memberId);
+    // 상세 조회
+    public MemberDTO findById(long id) {
+        return memberRepository.findById(id);
     }
 }
