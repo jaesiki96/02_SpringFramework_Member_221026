@@ -8,10 +8,9 @@ import lombok.*;
 @Setter
 @ToString
 public class MemberDTO {
-    private long memberId;
+    private long id;
     private String memberEmail;
     private String memberPassword;
     private String memberName;
     private int memberAge;
-    private String memberMobile;
 }

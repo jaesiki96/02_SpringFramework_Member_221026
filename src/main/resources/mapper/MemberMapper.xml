@@ -5,8 +5,8 @@
 
 <mapper namespace="Member">
     <insert id="save" parameterType="member">
-        insert into member_table(memberEmail, memberPassword, memberName, memberAge, memberMobile)
-        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberMobile})
+        insert into member_table(memberEmail, memberPassword, memberName, memberAge)
+            values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge})
     </insert>
     <select id="login" resultType="member">
         select * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
