@@ -5,10 +5,7 @@ import com.its.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -105,6 +102,63 @@ public class MemberController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "index";
+    }
+    // ajax 연습 --------------------------------------------------------------------------------------------------------
+    // ajax-ex
+    @GetMapping("/ajax-ex")
+    public String ajaxEx() {
+        return "ajaxEx";
+    }
+    // ajax1
+    // ajax 를 사용할때는 public 과 String 사이에 @ResponseBody
+    // @ResponseBody 를 사용 안하면 ok.jsp 를 찾아감...
+    @GetMapping("/ajax1")
+    public @ResponseBody String ajax1() {
+        System.out.println("MemberController.ajax1");
+        return "ok";
+    }
+    // ajax2
+    @PostMapping("/ajax2")
+    public @ResponseBody String ajax2() {
+        System.out.println("MemberController.ajax2");
+        return "good";
+    }
+    // ajax3
+    @GetMapping("/ajax3")
+    public @ResponseBody String ajax3(@RequestParam("value1") String value1,
+                                      @RequestParam("value2") String value2) {
+        System.out.println("MemberController.ajax3");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        return "vvv";
+    }
+    // ajax4
+    @PostMapping("/ajax4")
+    public @ResponseBody String ajax4(@RequestParam("value1") String value1,
+                                      @RequestParam("value2") String value2) {
+        System.out.println("MemberController.ajax4");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        String value3 = "I'm a return";
+        return value3;
+    }
+    // ajax5
+    @PostMapping("/ajax5")
+    public @ResponseBody MemberDTO ajax5(@RequestParam("value1") String value1,
+                                      @RequestParam("value2") String value2) {
+        System.out.println("MemberController.ajax5");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        String value3 = "I'm a return";
+        MemberDTO memberDTO = memberService.findById(1L);
+        return memberDTO;
+    }
+    // ajax6
+    @PostMapping("/ajax6")
+    public @ResponseBody List<MemberDTO> ajax6(@RequestParam("value1") String value1,
+                                         @RequestParam("value2") String value2) {
+        System.out.println("MemberController.ajax6");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        String value3 = "I'm a return";
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        return memberDTOList;
     }
 }
 

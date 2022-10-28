@@ -27,7 +27,6 @@
         <th>이름</th>
         <th>나이</th>
         <th>조회</th>
-        <th>수정</th>
         <th>삭제</th>
     </tr>
     <c:forEach items="${memberList}" var="member">
@@ -39,9 +38,6 @@
             <td>${member.memberAge}</td>
             <td>
                 <a href="/member?id=${member.id}">조회</a>
-            </td>
-            <td>
-                <a href="/memberUpdate?id=${member.id}">수정</a>
             </td>
             <td>
                                         <%-- onclick안에 싱글 쿼터 사용!   --%>
