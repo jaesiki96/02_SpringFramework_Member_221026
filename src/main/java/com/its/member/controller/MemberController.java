@@ -76,4 +76,60 @@ public class MemberController {
         // members 에 findAll 이 있기 때문에 redirect 로 회원목록을 불러올 수 있다
         return "redirect:/members";
     }
+    // 수정화면 출력
+    @GetMapping("/update")
+    public String updateForm(HttpSession session, Model model) {
+        // session 값을 가져오기 (abstract 가 붙으면 추상메서드)
+        // 좌변은 String, 우변은 object(object 가 가장 큼) -> 그래서 우변을 강제 형변환 해야 함
+        String memberEmail = (String) session.getAttribute("loginEmail");
+        // memberEmail 로 DB 에서 해당 회원의 전체 정보 조회
+        // 한명에 대한 것만 수정하는 것이기 때문에 DTO
+        MemberDTO memberDTO = memberService.findByEmail(memberEmail);
+        model.addAttribute("member", memberDTO);
+        return "memberUpdate";
+    }
+    // 수정 처리
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO) {
+        boolean result = memberService.update(memberDTO);
+        if (result) {
+            // 로그인 회원의 memberDetail.jsp
+            // id 값은 바뀌기 때문에 + 해당 DTO 의 id 값을 가져온다!!!!!!!!!
+            return "redirect:/member?id="+memberDTO.getId();
+        } else {
+            return "index";
+        }
+    }
+    // 로그아웃 (세션이 사라짐)
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

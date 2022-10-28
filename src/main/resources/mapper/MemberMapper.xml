@@ -20,4 +20,10 @@
     <select id="delete" parameterType="Long">
         delete from member_table where id=#{id}
     </select>
+    <select id="findByEmail" parameterType="String" resultType="member">
+        select * from member_table where memberEmail=#{memberEmail}
+    </select>
+    <select id="update" parameterType="member">
+        update member_table set memberName=#{memberName}, memberAge=#{memberAge} where id=#{id}
+    </select>
 </mapper>

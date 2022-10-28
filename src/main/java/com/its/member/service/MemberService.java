@@ -36,10 +36,21 @@ public class MemberService {
     public MemberDTO findById(long id) {
         return memberRepository.findById(id);
     }
-
+    // 삭제
     public void delete(long id) {
         memberRepository.delete(id);
     }
-    // 삭제
-
+    // 수정화면 출력
+    public MemberDTO findByEmail(String memberEmail) {
+        return memberRepository.findByEmail(memberEmail);
+    }
+    // 수청 처리
+    public boolean update(MemberDTO memberDTO) {
+        int result = memberRepository.update(memberDTO);
+        if (result > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
