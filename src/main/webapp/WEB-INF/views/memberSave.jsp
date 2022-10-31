@@ -10,6 +10,7 @@
 <head>
     <title>memberSave</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
+            <%--  ajax 사용시 jquery 추가!  --%>
     <script src="/resources/js/jquery.js"></script>
     <style>
         #save-form {
@@ -67,6 +68,7 @@
             dataType: "text",
             data: {inputEmail: email},
             success: function (result) {
+                console.log("checkResult: ", result);
                 if (result == "ok") {
                     checkResult.innerHTML = "사용할 수 있는 이메일입니다";
                     checkResult.style.color = "green";
@@ -76,7 +78,7 @@
                 }
             },
             error: function () {
-
+                console.log("실패");
             }
         });
     }

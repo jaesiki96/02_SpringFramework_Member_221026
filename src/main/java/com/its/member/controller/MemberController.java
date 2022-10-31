@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 import java.util.List;
 
 @Controller
@@ -170,6 +171,14 @@ public class MemberController {
         String checkResult = memberService.emailDuplicateCheck(memberEmail);
         return checkResult;
     }
+    // 상세조회 (ajax)
+   @GetMapping("/detail-ajax")
+    public @ResponseBody MemberDTO detailAjax(@RequestParam("id") Long id) {
+       System.out.println("id = " + id);
+//       MemberDTO memberDTO = memberService.findById(id); // 위 findById 가져옴
+//       return memberDTO;
+       return memberService.findById(id);
+   }
 }
 
 
