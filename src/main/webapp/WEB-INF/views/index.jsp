@@ -36,6 +36,7 @@
     const listFn = () => {
         location.href = "/members"
     }
+    // ajaxEx() 함수 정의
     const ajaxEx = () => {
         location.href = "/ajax-ex"
     }

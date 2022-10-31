@@ -11,6 +11,7 @@
     <title>ajaxEx</title>
     <script src="/resources/js/jquery.js"></script>
 </head>
+<%-- ajax 사용 시 화면이 바뀌지 않아도 backend 요청 가능--%>
 <body>
     <button onclick="ajax1()">ajax요청1</button>
     <button onclick="ajax2()">ajax요청2</button>
@@ -41,7 +42,7 @@
       console.log("ajax2 호출");
       // /ajax2 주소로 post 요청을 하고 controller 메서드도 정의
       $.ajax({
-          type: "post",
+          type: "post", // get/post
           url: "/ajax2",
           success: function () {
               console.log("성공");
@@ -51,6 +52,7 @@
           }
       });
   }
+  // 요청하면서 data 같이 보내기
   const ajax3 = () => {
       console.log("ajax3 호출");
       $.ajax({
@@ -68,6 +70,7 @@
           }
       })
   }
+  // data 도 보내고 return 도 받고
   const ajax4 = () => {
       console.log("ajax4 호출");
       $.ajax({
@@ -96,7 +99,7 @@
               value1: param1,
               value2: param2
           },
-          dataType: "json",
+          dataType: "json", // json 일때는 controller 에서 DTO, List 형식
           success: function (result) {
               console.log("성공");
               console.log(result);
@@ -108,6 +111,7 @@
   }
     const ajax6 = () => {
         console.log("ajax6 호출");
+        // jquery 문법
         $.ajax({
             type: "post",
             url: "/ajax6",

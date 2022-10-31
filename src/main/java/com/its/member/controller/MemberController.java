@@ -139,6 +139,7 @@ public class MemberController {
         System.out.println("value1 = " + value1 + ", value2 = " + value2);
         String value3 = "I'm a return";
         return value3;
+        // value3 가 ajaxEx에 result 로 보내진다
     }
     // ajax5
     @PostMapping("/ajax5")
@@ -159,6 +160,15 @@ public class MemberController {
         String value3 = "I'm a return";
         List<MemberDTO> memberDTOList = memberService.findAll();
         return memberDTOList;
+    }
+    // -----------------------------------------------------------------------------------------------------------------
+
+    // 이메일 중복체크 (ajax)
+    @PostMapping("/duplicate-check")
+    public @ResponseBody String emailDuplicateCheck(@RequestParam("inputEmail") String memberEmail) {
+        System.out.println("memberEmail = " + memberEmail);
+        String checkResult = memberService.emailDuplicateCheck(memberEmail);
+        return checkResult;
     }
 }
 
